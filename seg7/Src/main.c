@@ -7,7 +7,7 @@
 int main(void){
 
     seg7_init();
-	seg7_show_digit(1, 0);
+	seg7_show_digit(1, 8);
 	//seg7_show_digit(2, 1);
 	//seg7_show_digit(3, 2);
 	//seg7_show_digit(4, 3);

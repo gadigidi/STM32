@@ -27,9 +27,18 @@ In Progress
 
 # Implemented #
 
+- **GPIO driver**  
+  Basic GPIO configuration for input and output control, focusing on pin modes, pull-up/down settings, and direct register access.
+
+- **ADC driver**  
+  Analog-to-digital conversion configured for single-channel sampling to practice resolution, sample time selection, and raw data acquisition.
+
 - **Joystick driver**  
-  Analog joystick interfaced via ADC for hands-on experimentation with analog inputs and signal sampling.
+  Analog joystick interfaced via ADC to experiment with multi-axis input reading and practical signal sampling behavior.
 
 - **4-digit 7-segment display driver**  
-  7-segment display driven directly from GPIO pins to practice low-level output control and timing.
+  Multiplexed 7-segment display driven directly from GPIO pins to practice low-level output control and timing.
 
+- **TIMER2 driver**  
+  TIM2 configured as a periodic time base to practice prescaler and auto-reload setup, interrupts, and time-based event handling.
+  

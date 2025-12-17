@@ -7,6 +7,7 @@ rm adc.c
 rm systick.c
 rm joystick.c
 rm seg7.c
+rm isr.c
 
 ln -s ~/Embedded_projects/STM32/Src/gpio.c 
 ln -s ~/Embedded_projects/STM32/Src/uart2.c 
@@ -15,6 +16,7 @@ ln -s ~/Embedded_projects/STM32/Src/adc.c
 ln -s ~/Embedded_projects/STM32/Src/systick.c
 ln -s ~/Embedded_projects/STM32/Src/joystick.c
 ln -s ~/Embedded_projects/STM32/Src/seg7.c
+ln -s ~/Embedded_projects/STM32/Src/isr.c
 cd ..
 
 cd ./Inc
@@ -33,4 +35,5 @@ ln -s ~/Embedded_projects/STM32/Inc/systick.h
 ln -s ~/Embedded_projects/STM32/Inc/tim2.h 
 ln -s ~/Embedded_projects/STM32/Inc/joystick.h
 ln -s ~/Embedded_projects/STM32/Inc/seg7.h
+ln -s ~/Embedded_projects/STM32/Inc/isr.h
 cd ..
