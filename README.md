@@ -23,7 +23,7 @@ This repository represents an **ongoing learning process**, not a final product.
 
 # Status #
 
->> In Progress <<
+In Progress
 
 # Implemented #
 
