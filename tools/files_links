@@ -8,6 +8,8 @@ rm systick.c
 rm joystick.c
 rm seg7.c
 rm isr.c
+rm timebase.c
+rm timebase_isr.c
 
 ln -s ~/Embedded_projects/STM32/Src/gpio.c 
 ln -s ~/Embedded_projects/STM32/Src/uart2.c 
@@ -17,6 +19,8 @@ ln -s ~/Embedded_projects/STM32/Src/systick.c
 ln -s ~/Embedded_projects/STM32/Src/joystick.c
 ln -s ~/Embedded_projects/STM32/Src/seg7.c
 ln -s ~/Embedded_projects/STM32/Src/isr.c
+ln -s ~/Embedded_projects/STM32/Src/timebase.c
+ln -s ~/Embedded_projects/STM32/Src/timebase_isr.c
 cd ..
 
 cd ./Inc
@@ -27,6 +31,8 @@ rm systick.h
 rm tim2.h 
 rm joystick.h
 rm seg7.h
+rm isr.h
+rm timebase.h
 
 ln -s ~/Embedded_projects/STM32/Inc/gpio.h 
 ln -s ~/Embedded_projects/STM32/Inc/uart2.h 
@@ -36,4 +42,5 @@ ln -s ~/Embedded_projects/STM32/Inc/tim2.h
 ln -s ~/Embedded_projects/STM32/Inc/joystick.h
 ln -s ~/Embedded_projects/STM32/Inc/seg7.h
 ln -s ~/Embedded_projects/STM32/Inc/isr.h
+ln -s ~/Embedded_projects/STM32/Inc/timebase.h
 cd ..

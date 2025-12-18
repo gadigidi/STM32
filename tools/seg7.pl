@@ -4,25 +4,22 @@ my @segments = qw(A B C D E F G DEC);
 
 my @nums = ();
 
-push @nums, [qw(A B C D E F)];
-
-push @nums, [qw(B C)];
-
-push @nums, [qw(A B D E G)];
-
-push @nums, [qw(A B C D G)];
-
-push @nums, [qw(F G B C)];
-
-push @nums, [qw(A F G C D)];
-
-push @nums, [qw(A F E D C G)];
-
-push @nums, [qw(A B C)];
-
-push @nums, [qw(A B C D E F G)];
-
-push @nums, [qw(A B C D F G)];
+push @nums, [qw(A B C D E F)]; #0
+push @nums, [qw(B C)]; #1
+push @nums, [qw(A B D E G)]; #2
+push @nums, [qw(A B C D G)]; #3
+push @nums, [qw(F G B C)]; #4
+push @nums, [qw(A F G C D)]; #5
+push @nums, [qw(A F E D C G)]; #6
+push @nums, [qw(A B C)]; #7
+push @nums, [qw(A B C D E F G)]; #8
+push @nums, [qw(A B C D F G)]; #9
+push @nums, [qw(A B C E F G)]; #A
+push @nums, [qw(C D E F G)]; #b
+push @nums, [qw(A D E F)]; #C
+push @nums, [qw(B C D E G)]; #d
+push @nums, [qw(A D E F G)]; #E
+push @nums, [qw(A E F G)]; #F
 
 
 my %seg_ports = (
@@ -43,9 +40,6 @@ my %dig_ports = (
                  "4" => 3,
                );
            
-#foreach my $segment(@segments){
-           ##print "seg = $segment\n";
-#}
 print "const uint32_t seg_bsrr[] = {\n";
 my $i = 0;
 foreach my $num(@nums){
@@ -62,7 +56,7 @@ foreach my $num(@nums){
     }
   }
   printf "    ${mask}U";
-  if ($i<9){
+  if ($i<15){
     print ",\n";
   }
   else{

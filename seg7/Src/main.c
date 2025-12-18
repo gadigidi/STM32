@@ -1,4 +1,5 @@
 #include "seg7.h"
+#include "timebase.h"
 #include "gpio.h"
 #include <stdio.h>
 #include <stdint.h>
@@ -6,8 +7,14 @@
 
 int main(void){
 
-    seg7_init();
-	seg7_show_digit(1, 8);
+	timebase_init();
+
+	seg7_init();
+
+	seg7_update_buffer(0xABCD);
+
+
+	//seg7_show_digit(1, 0xa);
 	//seg7_show_digit(2, 1);
 	//seg7_show_digit(3, 2);
 	//seg7_show_digit(4, 3);

@@ -1,22 +1,23 @@
 #include "tim2.h"
+#include "timebase.h"
 #include <stdint.h>
 #include "stm32f446xx.h"
 
-volatile uint32_t tim2_isr_cntr;
 int main(void){
 
-	tim2_init();
+	timebase_init();
+	
+	uint32_t t_now;
+	uint32_t t0;
+	int secs = 0;
 
-	tim2_enable_interrupt();
-	
-	tim2_enable();
-	
-	volatile uint32_t j;
-	//volatile int i;
+	t0 = timebase_show_ms();
 	while (1) {
-		/*//wait ~1s
-		for (i = 0; i < 16000000; i++) {
-		 }*/
-		j++;
+		//t0 = timebase_show_ms();
+		//timebase_block_delay_ms(1000);
+		if (timebase_nonblocking_delay_ms(t_now, 10000)) {
+			t_now = timebase_show_ms();
+			secs = (t_now - t0) / 1000;
+		}
 	}
 }

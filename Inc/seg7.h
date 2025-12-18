@@ -22,7 +22,7 @@
 #define SEG7_SEG_ACTIVE			0
 #define SEG7_DIG_ACTIVE			1U
 
-extern const uint32_t seg_bsrr[10];
+extern const uint32_t seg_bsrr[16];
 extern const uint32_t dig_bsrr[4];
 #define SEG7_BSRR_DIGS_OFF		15U
 
@@ -31,5 +31,7 @@ void seg7_select_digit(uint32_t bsrr);
 void seg7_deselect_all_digits(void);
 void seg7_select_seg(uint32_t bsrr);
 void seg7_show_digit(int D, int digit);
+void seg7_update_buffer(uint16_t num);
+void seg7_auto_refresh(void);
 
 #endif /* SEG7_H_ */
