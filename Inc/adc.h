@@ -2,11 +2,11 @@
 #define ADC_H_
 
 #include <stdint.h>
-#define ADC1EN        (1U<<8)
-#define CR2_ADON      (1U<<0)
+#define ADC1EN          (1U<<8)
+#define CR2_ADON        (1U<<0)
 #define CR2_SWSTART     (1U<<30)
-#define SR_EOC        (1U<<1)
-#define CR2_CONT      (1U<<1)
+#define SR_EOC          (1U<<1)
+#define CR2_CONT        (1U<<1)
 
 void adc1_pa0_pa1_init(void);
 void adc1_enable_clock(void);

@@ -3,13 +3,13 @@
 
 #include <stdint.h>
 
-#define TIM2CLK_HZ            16000000U
-#define PSC_VAL                (TIM2CLK_HZ/1000000)-1
-#define ARR_VAL                1000U-1
+#define TIM2CLK_HZ          16000000U
+#define PSC_VAL             (TIM2CLK_HZ/1000000)-1
+#define ARR_VAL             1000U-1
 
-#define TIM2_CLK_EN            (1U<<0)
+#define TIM2_CLK_EN         (1U<<0)
 #define TIM2_CEN            (1U<<0)
-#define TIM2_SR_UIF            (1U<<0)
+#define TIM2_SR_UIF         (1U<<0)
 
 #define TIM2_UIEN            (1U<<0)
 

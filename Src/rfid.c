@@ -36,9 +36,7 @@ void rfid_update_irq(bool val) {
 }
 
 typedef enum {
-    RFID_IDLE,
-    RFID_WAIT_IRQ,
-    RFID_REQA,
+    RFID_IDLE, RFID_WAIT_IRQ, RFID_REQA,
     //RFID_ANTICOLL,
     RFID_READ_UID,
 //RFID_ERROR

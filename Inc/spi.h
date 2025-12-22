@@ -4,22 +4,22 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-#define APB2CLK_HZ            16000000U
-//#define SPI1_PSC            (5U<<3) //SPI1_CLK_HZ = APB2CLK_HZ/64
+#define APB2CLK_HZ          16000000U
+//#define SPI1_PSC          (5U<<3) //SPI1_CLK_HZ = APB2CLK_HZ/64
 
 #define SPI1_SCK            5U //PA5
-#define SPI1_MOSI            7U //PA7
-#define SPI1_MISO            6U //PA6
+#define SPI1_MOSI           7U //PA7
+#define SPI1_MISO           6U //PA6
 
 #define SPI_BR_DIV64        5U //SPI1_CLK_HZ = APB2CLK_HZ/64
-#define SPI_MASTER            1U
-#define SPI_SLAVE            0
-#define SPI_MODE_0            0
-#define SPI_MSB_FIRST        0
+#define SPI_MASTER          1U
+#define SPI_SLAVE           0
+#define SPI_MODE_0          0
+#define SPI_MSB_FIRST       0
 #define SPI_NSS_SOFTWARE    3U
-#define SPI_DATASIZE_8BIT    0
+#define SPI_DATASIZE_8BIT   0
 
-#define SPI1EN                (1U<<12)
+#define SPI1EN              (1U<<12)
 
 
 void spi1_init(void);
