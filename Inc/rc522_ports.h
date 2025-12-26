@@ -1,5 +1,5 @@
-#ifndef RFID_HW_H_
-#define RFID_HW_H_
+#ifndef RC522_PORTS_H_
+#define RC522_PORTS_H_
 
 #include <stdint.h>
 #include <stdbool.h>
@@ -12,10 +12,10 @@
 #define RFID_RST_HIGH_BSRR          (1U<<RFID_RST_PIN)
 #define RFID_RST_LOW_BSRR           (1U<<(RFID_RST_PIN+16))
 
-void rfid_hw_init(void);
-void rfid_assert_reset(void);
-void rfid_deassert_reset(void);
-void rfid_assert_cs(void);
-void rfid_deassert_cs(void);
+void rc522_ports_init(void);
+void rc522_assert_reset(void);
+void rc522_deassert_reset(void);
+void rc522_assert_cs(void);
+void rc522_deassert_cs(void);
 
-#endif /* RFID_HW_H_ */
+#endif /* RC522_PORTS_H_ */

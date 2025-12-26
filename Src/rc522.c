@@ -1,5 +1,5 @@
 #include "rc522.h"
-#include "rfid_hw.h"
+#include "rc522_ports.h"
 #include "timebase.h"
 #include "spi.h"
 #include "gpio.h"
@@ -7,9 +7,10 @@
 #include <stdint.h>
 #include "stm32f446xx.h"
 
-void rc522_init(void) {
+void rc522_chip_init(void) {
     rc522_hard_reset();
-
+    rc522_write_reg(); //Turn on antennas
+    rc522_config_timeout(); //Config RC522 timer
 }
 
 void rc522_hard_reset(void) {
@@ -34,12 +35,19 @@ uint8_t rc522_read_reg(uint8_t addr) {
     rfid_assert_cs();
     uint8_t dummy = spi1_txrx_byte(command);
     uint8_t data = spi1_txrx_byte(0xaa);
-    //rfid_deassert_cs();
+    rfid_deassert_cs();
     return data;
 }
 
-void rc522_clean_irq(void) {
+void rc522_clean_flags(void) {
 
 }
 
+void rc522_config_timeout(void) {
+
+}
+
+void rc522_clean_fifo(void) {
+
+}
 

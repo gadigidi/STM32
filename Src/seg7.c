@@ -62,13 +62,6 @@ void seg7_auto_refresh(void) {
     curr_digit = (curr_digit + 1) % 4;
 }
 
-/*
- static volatile bool start_scroll_digits = 0;
-void seg7_scroll_digits_enable(bool start1_stop0) {
-    scroll_digits = start1_stop0;
-}
- */
-
 static uint8_t scroll_buffer[12];
 void seg7_set_buffer_for_scroll(uint32_t num) {
     scroll_buffer[0] = ((num >> 0) & 0xFU);
@@ -85,7 +78,7 @@ void seg7_set_buffer_for_scroll(uint32_t num) {
     scroll_buffer[11] = 16U; //'-'
 }
 
-static uint32_t scroll_start_time;
+static uint32_t scroll_start_time = 0;
 static bool scroll_enable = 0;
 void seg7_enable_scroll(bool enable) {
     scroll_start_time = timebase_show_ms();

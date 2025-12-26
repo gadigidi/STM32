@@ -1,11 +1,11 @@
-#include "rfid_hw.h"
+#include "rc522_ports.h"
 #include "spi.h"
 #include "gpio.h"
 #include <stdio.h>
 #include <stdint.h>
 #include "stm32f446xx.h"
 
-void rfid_hw_init(void) {
+void rfid_ports_init(void) {
     gpio_init(GPIOAEN);
 
     //set IRQ as input

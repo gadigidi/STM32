@@ -1,6 +1,5 @@
 #include "rfid.h"
 #include "rc522.h"
-#include "rfid_hw.h"
 #include "gpio.h"
 #include "isr.h"
 #include "timebase.h"
@@ -58,43 +57,61 @@ void rfid_update_irq_flag(void) {
     rfid_pending_irq = 1;
 }
 
+bool rfid_show_pending_irq_status(void) {
+    return rfid_pending_irq;
+}
+
 typedef enum {
-    RFID_IDLE, RFID_WAIT_IRQ, RFID_REQA,
-    //RFID_ANTICOLL,
-    RFID_READ_UID,
-//RFID_ERROR
+    RFID_IDLE, RFID_WAIT_IRQ, RFID_READ_UID, RFID_SHOW_UID, RFID_ERROR
 } rfid_state_t;
 
-static rfid_state_t rfid_state = RFID_IDLE; //Check later where to put
 void rfid_fsm(void) {
-    /*
+    static rfid_state_t rfid_state = RFID_IDLE; //Check later where to put
+    static uint8_t uid[];
+    int len;
+    uint8_t cascade_level;
+    static bool error_detected = 0;
+
+    //Non blocking delays
+    static idle_start_time = 0;
+    static req_timeout_start_time = 0;
+    static uid_timeout_start_time = 0;
+    static cooldown_start_time = 0;
+    uint32_t time_now;
+
     switch (rfid_state) {
     case RFID_IDLE:
-        if (rfid_pending_irq) {
+        time_now = timebase_show_ms();
+        uint32_t delta_time = time_now - idle_start_time;
+        if (delta_time >= RFID_POLL_PERIOD_MS) {
+            rc522_clean_flags(); //TODO
+            rfid_pending_req = 0; //Just to be sure before waiting for new irq
+            rfid_send_req(); //TODO
             rfid_state = RFID_WAIT_IRQ;
-            rfid_pending_irq = 0;
         }
         break;
     case RFID_WAIT_IRQ:
         if (rfid_pending_irq) {
-            rfid_state = RFID_REQA;
-            rfid_pending_irq = 0;
-        }
-        break;
-    case RFID_REQA:
-        if (rfid_pending_irq) {
-            uint32_t uid = spi1_read();
+            rc522_read_(); //TODO
             rfid_state = RFID_READ_UID;
             rfid_pending_irq = 0;
         }
         break;
     case RFID_READ_UID:
-        if (rfid_pending_irq) {
-            seg7_set_buffer_for_scroll();
+        if (error_detected) {
             rfid_state = RFID_IDLE;
-            rfid_pending_irq = 0;
+        }
+        else {
+            rfid_state = RFID_SHOW_UID;
         }
         break;
+    case RFID_SHOW_UID:
+        seg7_set_buffer_for_scroll(uid);
+        rfid_state = RFID_ERROR;
+        break;
+    case RFID_ERROR:
+        rfid_error(); //TODO
+        rfid_state = RFID_IDLE;
     }
-     */
 }
+

@@ -8,7 +8,7 @@ rm isr.c
 rm timebase.c
 rm spi.c
 rm rfid.c
-rm rfid_hw.c
+rm rc522_ports.c
 rm rc522.c
 
 ln -s ~/Embedded_projects/STM32/Src/gpio.c 
@@ -20,7 +20,7 @@ ln -s ~/Embedded_projects/STM32/Src/isr.c
 ln -s ~/Embedded_projects/STM32/Src/timebase.c
 ln -s ~/Embedded_projects/STM32/Src/spi.c
 ln -s ~/Embedded_projects/STM32/Src/rfid.c
-ln -s ~/Embedded_projects/STM32/Src/rfid_hw.c
+ln -s ~/Embedded_projects/STM32/Src/rc522_ports.c
 ln -s ~/Embedded_projects/STM32/Src/rc522.c
 cd ..
 
@@ -34,7 +34,7 @@ rm isr.h
 rm timebase.h
 rm spi.h
 rm rfid.h
-rm rfid_hw.h
+rm rc522_ports.h
 rm rc522.h
 
 ln -s ~/Embedded_projects/STM32/Inc/gpio.h 
@@ -46,7 +46,7 @@ ln -s ~/Embedded_projects/STM32/Inc/isr.h
 ln -s ~/Embedded_projects/STM32/Inc/timebase.h
 ln -s ~/Embedded_projects/STM32/Inc/spi.h
 ln -s ~/Embedded_projects/STM32/Inc/rfid.h
-ln -s ~/Embedded_projects/STM32/Inc/rfid_hw.h
+ln -s ~/Embedded_projects/STM32/Inc/rc522_ports.h
 ln -s ~/Embedded_projects/STM32/Inc/rc522.h
 
 cd ..

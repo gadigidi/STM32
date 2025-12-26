@@ -21,8 +21,8 @@ int main(void){
     gpio_pin_pupdr(GPIOA, 6);
     volatile uint32_t avg = 0;
     uint8_t rd_data = rc522_read_reg(0x37);
-    rd_data = rc522_read_reg(0x37);
-    rd_data = rc522_read_reg(0x37);
+    //rd_data = rc522_read_reg(0x37);
+    //rd_data = rc522_read_reg(0x37);
 
     avg = 0;
     while (1) {
