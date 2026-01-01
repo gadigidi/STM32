@@ -6,10 +6,10 @@
 
 This project is intentionally designed as a **system-level embedded application**, built **from scratch** using custom peripheral drivers.
 
-The focus is on **modular firmware architecture**, **non-blocking execution**, and **event-driven design**.
-Peripheral drivers (SPI, GPIO, EXTI) are implemented as independent modules, while higher-level application logic is managed using a clear **finite state machine (FSM)**.
+The focus is on **modular firmware architecture**, **non-blocking execution**, and **event-driven design**.  
+Peripheral drivers (**TIMER, SPI, GPIO, EXTI**) are implemented as independent modules, while higher-level application logic is managed using a clear **finite state machine (FSM)**.
 
-The RFID reader (RC522) operates using **interrupt-based signaling**, allowing the main system to remain responsive.
+The RFID reader (RC522) operates using **interrupt-based signaling**, allowing the main system to remain responsive.  
 At the same time, a **7-segment display is refreshed continuously in the background**, demonstrating concurrent task handling without blocking delays.
 
 This approach reflects real embedded product design considerations such as timing, scalability, and clean API boundaries.
@@ -19,7 +19,7 @@ This approach reflects real embedded product design considerations such as timin
 ## Scope
 
 - SPI communication with the RC522 RFID module  
-- RF card and tag detection with **UID** reading  
+- RF card and tag detection (ISO14443A)  
 - Interrupt-driven RFID event handling  
 - Background 7-segment display refresh  
 - Integration of multiple peripherals into a single embedded firmware system  
@@ -35,18 +35,20 @@ This approach reflects real embedded product design considerations such as timin
 
 ---
 
-## How It Works
+## Hardware
 
-The system is built around a **non-blocking finite state machine (FSM)** that coordinates RFID communication and background tasks.
+The RC522 module is connected to the STM32 via SPI.
 
-In the idle state, the firmware waits for an **interrupt from the RC522 module**, indicating RF activity.
-Once triggered, the FSM advances through request, response, and data retrieval phases without blocking the main loop.
+The RC522 **RST** pin is held high using an external **10 kΩ pull-up resistor** to 3.3 V to ensure stable operation and prevent unintended resets.
 
-RFID communication is handled via SPI transactions, while interrupt flags and internal state variables ensure safe transitions between states.
-At the same time, the **7-segment display is refreshed continuously in the background**, independent of RFID activity.
+The **IRQ** signal is connected to an EXTI-capable GPIO pin for interrupt-driven operation.
 
-This event-driven approach keeps the system responsive, deterministic, and scalable as additional features are introduced.
+---
 
 ## Status
 
-**In Progress**
+The RC522 subsystem is operational with a non-blocking, IRQ-driven FSM.  
+REQA short frames (7-bit) are transmitted correctly, and valid ATQA responses are received from ISO14443A cards.
+
+This milestone confirms a stable RF link and correct low-level configuration, forming a solid base for incremental FSM expansion toward UID anti-collision and card selection.
+
