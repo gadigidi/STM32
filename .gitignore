@@ -5,8 +5,6 @@
 .metadata/
 .recommenders/
 .settings/
-.project
-.cproject
 .classpath
 .launch
 *.launch
@@ -67,4 +65,4 @@ Thumbs.db
 # =========================
 # My files
 # ========================
-/CMSIS/
+
